@@ -88,6 +88,7 @@ const generateToken=(id)=>{
 
 //get the actuell user
 const me=async (req,res)=>{
+    console.log(req.user.name)
     const {_id,name,email,admin}=await User.findById(req.user.id) ;
     res.status(200).json({
         id:_id,

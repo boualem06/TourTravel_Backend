@@ -2,8 +2,8 @@ const Review=require('../models/Review')
 
 const NewReview=async(req,res)=>{
    
-    const {productId,username,reviewText,rating}=req.body  ;
-
+    const {productId,reviewText,rating}=req.body  ;
+    username=req.user.name
     if(!productId || !username || !reviewText || !rating )
     {
         res.status(400) ;
