@@ -68,11 +68,17 @@ const deleteTour=async(req,res)=>{
 }
 
 const searchTour=async(req,res)=>{
+    console.log(req.params.address) ;
+    console.log(req.params.distance) ;
+    console.log(req.params.maxGroupSize)
     const tours=await Tour.find({
-        address:req.params.address,
-        distance:req.params.distance,
-        maxGroupSize : {$lt:req.params.maxGroupSize}
+        $and: [
+            { address:req.params.address, },
+            {  distance:req.params.distance, },
+            {maxGroupSize : {$lte:req.params.maxGroupSize}}
+          ]    
     })
+
     res.status(200).json(
         tours
     )
