@@ -51,6 +51,15 @@ const getTours=async (req,res)=>{
     })
 }
 
+const getFeaturedTours=async (req,res)=>{
+    const tours=await Tour.find({
+        featured:true
+    }) ;
+    res.status(200).json({
+      "toursArray":tours
+    })
+}
+
 const getTourById=async (req,res)=>{
     const tour=await Tour.findById(req.params.tourId) ;
     res.status(200).json(
@@ -68,9 +77,6 @@ const deleteTour=async(req,res)=>{
 }
 
 const searchTour=async(req,res)=>{
-    console.log(req.params.address) ;
-    console.log(req.params.distance) ;
-    console.log(req.params.maxGroupSize)
     const tours=await Tour.find({
         $and: [
             { address:req.params.address, },
@@ -88,6 +94,7 @@ const searchTour=async(req,res)=>{
 module.exports={
     NewTour,
     getTours,
+    getFeaturedTours,
     getTourById,
     deleteTour,
     searchTour
