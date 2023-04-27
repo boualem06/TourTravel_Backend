@@ -3,8 +3,9 @@ const Review=require('../models/Review')
 const NewReview=async(req,res)=>{
    
     const {productId,reviewText,rating}=req.body  ;
+    console.log(productId)
     username=req.user.name
-    if(!productId || !username || !reviewText || !rating )
+    if(!productId  || !reviewText || !rating )
     {
         res.status(400) ;
         res.json( {message:"please add all fields",status:400})
@@ -23,7 +24,7 @@ const NewReview=async(req,res)=>{
     res.status(201).json({
         _id:review.id,
         productId:review.productId,
-        username:review.username ,
+        username:req.user.name ,
         reviewText:review.reviewText ,
         rating:review.rating ,
     })
