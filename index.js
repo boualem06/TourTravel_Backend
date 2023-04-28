@@ -3,6 +3,7 @@ const { default: mongoose } = require('mongoose')
 const UserRoutes = require("./routes/UserRoutes") ;
  const TourRoutes=require("./routes/TourRoutes") ;
  const ReviewRoutes=require("./routes/ReviewRoutes") ;
+ const BookingRoutes=require("./routes/BookingRoutes") ;
 // const CartRoutes=require('./routes/CartRoutes')
 const app = express()
 const cors = require("cors");
@@ -21,9 +22,10 @@ app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ limit: '50mb', extended: true }));
 // app.use(express.json({ limit: "50mb" }));
 app.use(express.static('public'));
- app.use(UserRoutes);
+app.use(UserRoutes);
 app.use(TourRoutes)
 app.use(ReviewRoutes)
+app.use(BookingRoutes)
 
 // app.use(ProductRoutes) ;
 // app.use(CartRoutes) ;
