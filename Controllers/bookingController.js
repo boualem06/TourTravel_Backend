@@ -43,8 +43,16 @@ const getBooks=async (req,res)=>{
     )
 }
 
+const deleteBook=async(req,res)=>{
+    const deletedTour= await Book.deleteOne({_id:req.body.id})
+    res.status(200).json(
+        deletedTour
+    )
+}
+
 
 module.exports={
     NewBook,
-    getBooks
+    getBooks,
+    deleteBook
 }
