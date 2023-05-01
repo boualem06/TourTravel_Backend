@@ -18,8 +18,6 @@ const uploadImage = async (req, res) => {
         const uploadResponse = await cloudinary.uploader.upload(fileStr, {
             upload_preset: 'xeww3a1m',
         });
-        // console.log(uploadResponse);
-        // res.json({ msg: 'yaya' });
         return uploadResponse;
     } catch (err) {
         console.error(err);
@@ -28,23 +26,9 @@ const uploadImage = async (req, res) => {
 }
 
 const NewTour=async(req,res)=>{
-    // if(req.user.admin===false){
-    //     res.status(400) ;
-    //     res.json( {message:"Only admins can add New Tours ",status:400})
-    //     return ;
-    // }
-    console.log("hello1")
+  
     const {title,city,address,distance,photo,desc,price,maxGroupSize,featured}=req.body  ;
-    console.log("hello2")
-    // if(!title || !city || !address || !distance || !photo || !desc || !price || !maxGroupSize || (featured!=false && featured!=true))
-    // {
-    //     console.log("hello3")
-    //     res.status(400) ;
-    //     res.json( {message:"please add all fields",status:400})
-    //     return ;
-    // }
-
-    console.log("hello")
+  
 
     const fileStr = req.body.photo;
     const uploadResponse = await cloudinary.uploader.upload(fileStr, {

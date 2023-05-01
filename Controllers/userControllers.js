@@ -2,7 +2,6 @@ const User=require('../models/userModel')
 const jwt=require('jsonwebtoken') ;
 const bcrypt=require('bcryptjs') ;
 require("dotenv").config();
-// const asyncHandler=require('express-async-handler') ;
 const registerUser=async(req,res)=>{
     const {name,email,password}=req.body ;
     if(!name || !email || !password){
